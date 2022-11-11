@@ -2,9 +2,8 @@
 @import "fonts";
 @import "default";
 @import "vars";
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+@import "header";
+@import "search";
+@import "catalog";
+@import "track";
+@import "track__info";

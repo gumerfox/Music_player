@@ -3,6 +3,9 @@
   background-color: transparent;
   border: 2px solid transparent;
   border-radius: 20px;
+  display: flex;
+  //   поворачиваем
+  flex-direction: column;
 }
 
 .track--active {
@@ -43,6 +46,9 @@
 .track__info {
   background-color: #ffffff;
   border-radius: 0px 0px 12px 12px;
+  padding: 14px 8px;
+  flex-grow: 1;
+  width: 100%;
 }
 
 .track:hover .track__img-wrap:after,

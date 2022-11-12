@@ -85,7 +85,12 @@
         </div>
 
         <div class="player__controller">
-            <button class="player__icon player__icon--stop"></button>
+            <button class="player__icon player__icon--stop">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 6H18V18H6V6Z" />
+                </svg>
+
+            </button>
             <button class="player__icon player__icon--prev"></button>
             <button class="player__icon player__icon--pause"></button>
             <button class="player__icon player__icon-next"></button>
@@ -96,17 +101,17 @@
                 <input class="player__progress--input" type="range" min="0" max="100" value="0">
             </div>
             <p class="player__time">
-                <span class="player__time--passed">0:24</span>
+                <span class="player__time-passed">0:24</span>
                 <span>/</span>
-                <span class="player__time--total">4:30</span>
+                <span class="player__time-total">4:30</span>
             </p>
         </div>
 
         <div class="player__volume--wrap">
             <div class="player__volume">
-                <input class="player__volume--input" type="range" min="0" max="100" value="100">
+                <input class="player__volume-input" type="range" min="0" max="100" value="100">
             </div>
+            <button class="player__icon player__icon--mute"></button>
         </div>
-        <button class="player__icon player__icon--mute"></button>
     </div>
 </section>

@@ -384,6 +384,16 @@ p {
   transform: scale(0);
 }
 
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 217px;
+  }
+}
+@media (max-width: 560px) {
+  body {
+    padding-bottom: 187px;
+  }
+}
 .header {
   padding-top: 24px;
   padding-bottom: 24px;
@@ -395,10 +405,12 @@ p {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  gap: 25px;
+  justify-content: space-between;
 }
 
 .header__logo {
-  margin-right: 94px;
+  margin-right: 69px;
 }
 
 .header__search {
@@ -416,6 +428,35 @@ p {
   color: tomato;
 }
 
+@media (max-width: 1024px) {
+  .header__conteiner {
+    padding: 0 22px;
+  }
+  .header__search {
+    margin-right: 90px;
+  }
+}
+@media (max-width: 768px) {
+  .header__conteiner {
+    padding: 0 15px;
+    max-width: 610px;
+  }
+  .header__logo {
+    margin-right: 12px;
+  }
+  .header__search {
+    margin-right: 0;
+  }
+}
+@media (max-width: 560px) {
+  .header__conteiner {
+    flex-wrap: wrap;
+  }
+  .header__search {
+    order: 1;
+    flex-basis: 100%;
+  }
+}
 .search {
   max-width: 692px;
   position: relative;
@@ -457,10 +498,26 @@ p {
   color: #fff;
   grid-column: 1/-1;
   display: flex;
-  justify-content: end;
+  justify-self: end;
   align-items: center;
   gap: 8px;
   font-weight: 600;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+@media (max-width: 560px) {
+  .catalog__container {
+    padding: 0 11px;
+    grid-template-columns: repeat(auto-fill, 148px);
+    gap: 2px;
+  }
+}
+.catalog__btn-add {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: 14px;
+  gap: 4px;
 }
 
 .track {
@@ -540,12 +597,22 @@ p {
   background-color: #fff;
 }
 
+@media (max-width: 560px) {
+  .track {
+    padding: 3px;
+    border-width: 1px;
+  }
+  .track__info {
+    padding: 8px;
+  }
+}
 .track-info {
   text-align: left;
 }
 
 .track-info__title {
   font-weight: 600;
+  margin-bottom: 6px;
 }
 
 .track-info__artist {
@@ -553,6 +620,16 @@ p {
   font-size: 14px;
 }
 
+@media (max-width: 560px) {
+  .track-info__title {
+    font-size: 14px;
+    margin-bottom: 4px;
+    border-radius: 14px;
+  }
+  .track-info__artist {
+    font-size: 8px;
+  }
+}
 .player {
   position: fixed;
   left: 0;

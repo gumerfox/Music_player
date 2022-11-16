@@ -52,15 +52,3 @@ p {
   position: fixed;
   transform: scale(0);
 }
-@media (max-width: 768px) {
-  body {
-    // чтобы плеер внизу не надвигался на карточки
-    padding-bottom: 217px;
-  }
-}
-
-@media (max-width: 560px) {
-  body {
-    padding-bottom: 187px;
-  }
-}

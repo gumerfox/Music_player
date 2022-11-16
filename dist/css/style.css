@@ -384,16 +384,6 @@ p {
   transform: scale(0);
 }
 
-@media (max-width: 768px) {
-  body {
-    padding-bottom: 217px;
-  }
-}
-@media (max-width: 560px) {
-  body {
-    padding-bottom: 187px;
-  }
-}
 .header {
   padding-top: 24px;
   padding-bottom: 24px;
@@ -621,10 +611,12 @@ p {
 }
 
 @media (max-width: 560px) {
+  .track-info--mobile-center {
+    text-align: center;
+  }
   .track-info__title {
     font-size: 14px;
     margin-bottom: 4px;
-    border-radius: 14px;
   }
   .track-info__artist {
     font-size: 8px;
@@ -699,7 +691,7 @@ p {
   background-image: url("../images/like-o.svg");
 }
 
-.player__progress--wrap {
+.player__progress-wrap {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -756,7 +748,7 @@ p {
   gap: 4px;
 }
 
-.player__volume--wrap {
+.player__volume-wrap {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -800,4 +792,74 @@ p {
 
 .player__icon--mute-off {
   background-image: url("../images/volume-off.svg");
+}
+
+@media (max-width: 1024px) {
+  .player__container {
+    grid-template-columns: 1fr 1fr 2fr 1fr;
+  }
+}
+@media (max-width: 968px) {
+  .player {
+    right: 34px;
+    left: 34px;
+    padding: 22px 60px;
+    border-radius: 30px;
+  }
+  .player--active {
+    bottom: 24px;
+  }
+  .player__container {
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 27px;
+  }
+  .player__progress-wrap {
+    order: 1;
+    grid-column: 1/-1;
+  }
+  .player__progress {
+    max-width: none;
+  }
+  .player__controller {
+    justify-self: center;
+  }
+  .player__volume-wrap {
+    justify-self: end;
+  }
+}
+@media (max-width: 740px) {
+  .player {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .player--active {
+    bottom: 0;
+  }
+  .player__container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .player__progress-wrap {
+    padding-left: 0;
+  }
+  .player__volume-wrap {
+    display: none;
+  }
+  .player__controller {
+    justify-self: end;
+  }
+}
+@media (max-width: 560px) {
+  .player {
+    left: 0;
+    right: 0;
+    gap: 16px;
+    padding: 16px 15px;
+  }
+  .player__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .player__controller {
+    justify-self: center;
+  }
 }

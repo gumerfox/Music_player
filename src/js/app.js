@@ -85,6 +85,8 @@ const dataMusic = [
   },
 ];
 
+let playlist = [];
+
 const audio = new Audio();
 const tracksCard = document.getElementsByClassName("track");
 
@@ -125,13 +127,16 @@ const playMusic = (event) => {
   const trackActive = event.currentTarget;
 
   if (trackActive.classList.contains("track--active")) {
-    pausePlayer(trackActive);
+    pausePlayer();
     return;
   }
-
+let i = 0;
   const id = trackActive.dataset.idTrack;
 
-  const track = dataMusic.find((item) => id === item.id);
+  const track = dataMusic.find((item, index) => {
+    i =index;
+    return id === item.id;
+  });
 
   audio.src = track.mp3;
   audio.play();
@@ -140,11 +145,13 @@ const playMusic = (event) => {
   player.classList.add("player--active");
 
   for (let i = 0; i < tracksCard.length; i++) {
-    tracksCard[i].classList.remove("track--active");
+    if (id === tracksCard[i].dataset.idTrack) {
+      tracksCard[i].classList.add('track--active');
+    } else {
+     tracksCard[i].classList.remove("track--active");
   }
-
-  trackActive.classList.add("track--active");
-};
+}
+  };
 const addHandlerTrack = () => {
   for (let i = 0; i < tracksCard.length; i++) {
     tracksCard[i].addEventListener("click", playMusic);
@@ -153,24 +160,28 @@ const addHandlerTrack = () => {
 
 pauseBtn.addEventListener("click", pausePlayer);
 
-stopBtn.addEventListener("click", () => {
-  if (audio.played) {
-    audio.pause();
-  }
-  player.classList.remove("player--active");
+stopBtn.addEventListener('click', () => {
+  audio.src = '';
+  player.classList.remove('player_active');
+  document.querySelector('.track_active').classList.remove('track_active');
+  //! add stop active-card
+  
 });
 
 const createCard = (data) => {
   const card = document.createElement("a");
-  card.href = "#";
-  // либо можно так
-  // card.classList.add("catalog__item", "track");
-  card.className = "catalog__item track";
-  card.dataset.idTrack = data.id;
+card.href = '#';
+  card.classList.add("catalog__item", "track");
+card.dataset.idTrack = data.id;
 
   card.innerHTML = `
   <div class="track__img-wrap">
-                <img class="track__poster" src="${data.poster}" alt="${data.artist}" width="180" height="180">
+                <img
+                 class="track__poster" 
+                 src="${data.poster}" 
+                 alt="${data.artist} ${data.track}"
+                 width="180"
+                 height="180">
             </div>
             <div class="track__info track-info">
                 <p class="track-info__title">${data.track}</p>
@@ -181,7 +192,8 @@ const createCard = (data) => {
 };
 
 const renderCatalog = (dataList) => {
-  catalogContainer.textContent = "";
+playlist = [...dataList];
+  catalogContainer.textContent = '';
   const listCards = dataList.map(createCard);
   catalogContainer.append(...listCards);
   addHandlerTrack();
@@ -189,22 +201,22 @@ const renderCatalog = (dataList) => {
 
 // Делаем отображение только 2 рядов карточек
 const checkCount = (i = 1) => {
-  tracksCard[0];
+  tracksCard[0]
   if (catalogContainer.clientHeight > tracksCard[0].clientHeight * 3) {
-    tracksCard[tracksCard.length - i].style.display = "none";
-    checkCount(i + 1);
+      tracksCard[tracksCard.length - i].style.display = 'none';
+      checkCount(i + 1);
   } else if (i !== 1) {
-    catalogContainer.append(catalogAddBtn);
-  }
+          catalogContainer.append(catalogAddBtn);
+      }
 };
 
 const init = () => {
   renderCatalog(dataMusic);
   checkCount();
-  // Функция кнопки 'Увидеть все'
+  // Функция кнопки 'Увидеть все', У меня не отображается эта кнопка
   catalogAddBtn.addEventListener("click", () => {
-    [...tracksCard].forEach((element) => {
-      element.style.display = "";
+    [...tracksCard].forEach((trackCard) => {
+      trackCard.style.display = "";
       catalogAddBtn.remove();
     });
   });

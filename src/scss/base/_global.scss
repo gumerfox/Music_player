@@ -13,8 +13,9 @@ body {
   background-image: url(../img/global/background.jpg);
   background-repeat: no-repeat;
   background-position: top center;
-  background-size: contain;
+  background-size: cover;
   background-attachment: fixed;
+height: 100vh
   padding-bottom: 172px;
 
   @media (max-width: 768px) {

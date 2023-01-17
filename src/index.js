@@ -1,4 +1,4 @@
-const API_URL = "https://https://api-music-lilac.vercel.app/";
+const API_URL = "https://apimusic.gumerfox.repl.co/";
 let dataMusic = [];
 let playlist = [];
 
